@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Léčivo, droga, nebo jed?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <img src="assets/ilang-logo.png" alt="ILang logo se sovičkou" class="brand-logo">
+      <p class="eyebrow">Preventivně-výchovná webová aplikace</p>
+      <h1>Léčivo, droga, nebo jed?</h1>
+      <p class="lead">Přírodní neznamená automaticky bezpečné. Otestuj si, co víš o léčivých, psychoaktivních a toxických látkách.</p>
+      <button class="primary" onclick="showSection('myty')">Začít</button>
+    </div>
+  </header>
+
+  <nav class="nav wrap">
+    <button onclick="showSection('uvod')">Úvod</button>
+    <button onclick="showSection('latky')">Karty látek</button>
+    <button onclick="showSection('myty')">Mýtus × fakt</button>
+    <button onclick="showSection('situace')">Co bys udělal?</button>
+    <button onclick="showSection('kviz')">Kvíz</button>
+    <button onclick="showSection('prevence')">Prevence</button>
+  </nav>
+
+  <main class="wrap">
+    <section id="uvod" class="panel active">
+      <h2>Proč tahle aplikace vznikla?</h2>
+      <p>Cílem je ukázat, že stejná nebo podobná látka může mít léčebné využití, toxické účinky i potenciál ke zneužití. Rozhoduje dávka, způsob použití, zdravotní stav člověka a další okolnosti.</p>
+      <div class="notice">
+        <strong>Důležité:</strong> aplikace je vzdělávací a preventivní. Neobsahuje návody k výrobě, získávání ani užívání návykových látek.
+      </div>
+      <div class="grid three">
+        <article class="mini"><span>🌿</span><h3>Přírodní původ</h3><p>Není zárukou bezpečnosti.</p></article>
+        <article class="mini"><span>💊</span><h3>Medicínské využití</h3><p>Neznamená nulové riziko.</p></article>
+        <article class="mini"><span>🧠</span><h3>Prevence</h3><p>Pomáhá rozhodovat se podle faktů.</p></article>
+      </div>
+    </section>
+
+    <section id="latky" class="panel">
+      <h2>Karty vybraných látek</h2>
+      <p class="muted">Klikni na kartu. Obsah je záměrně stručný; v další verzi lze doplnit fotografie, citace a odkazy na zdroje.</p>
+      <div id="cards" class="grid cards"></div>
+    </section>
+
+    <section id="myty" class="panel">
+      <h2>Mýtus, nebo fakt?</h2>
+      <p id="myth-progress" class="muted"></p>
+      <div class="quizbox">
+        <h3 id="myth-text"></h3>
+        <div class="actions">
+          <button class="choice" onclick="answerMyth(false)">Mýtus</button>
+          <button class="choice" onclick="answerMyth(true)">Fakt</button>
+        </div>
+        <p id="myth-feedback" class="feedback"></p>
+        <button id="myth-next" class="primary hidden" onclick="nextMyth()">Další</button>
+      </div>
+    </section>
+
+    <section id="situace" class="panel">
+      <h2>Co bys udělal?</h2>
+      <p class="muted">Nejde jen o znalosti. Prevence je i o rozhodování v konkrétních situacích.</p>
+      <div id="scenario-box" class="quizbox"></div>
+    </section>
+
+    <section id="kviz" class="panel">
+      <h2>Závěrečný kvíz</h2>
+      <div id="quiz-box" class="quizbox"></div>
+    </section>
+
+    <section id="prevence" class="panel">
+      <h2>Když si nejsi jistý</h2>
+      <div class="grid two">
+        <article class="mini">
+          <h3>Ověřuj zdroje</h3>
+          <p>Informace z videa, sociální sítě nebo od kamaráda nemusí být správné. Hledej odborné a zdravotnické zdroje.</p>
+        </article>
+        <article class="mini">
+          <h3>Neboj se zeptat</h3>
+          <p>Pokud máš obavy kvůli sobě nebo někomu blízkému, oslov dospělého, kterému důvěřuješ, školního poradenského pracovníka nebo zdravotníka.</p>
+        </article>
+      </div>
+      <div class="notice">
+        V další verzi lze doplnit ověřené kontakty na odbornou pomoc, školní preventivní materiály a vlastní výsledky SOČ.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-brand"><img src="assets/ilang-logo.png" alt="ILang" class="footer-logo"><div><strong>© 2026 ILang</strong><br>Preventivně-výchovná aplikace pro projekt SOČ.</div></div>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal hidden" onclick="closeModal(event)">
+    <div class="modal-card">
+      <button class="close" onclick="closeModal(event, true)">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
