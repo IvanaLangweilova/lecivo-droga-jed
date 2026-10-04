@@ -1,0 +1,246 @@
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:linear-gradient(#f8f3e9,#f1f6ef);color:#23332c;line-height:1.55}.wrap{max-width:1100px;margin:auto;padding:0 22px}.hero{background:linear-gradient(135deg,#dcebdc,#f4dfcf);padding:48px 0}.heroIn{display:flex;gap:28px;align-items:center}.logo{width:110px}.eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#426f5b;font-size:.78rem}h1{font-family:Georgia,serif;font-size:clamp(2.5rem,6vw,4.8rem);margin:.1em 0}button{cursor:pointer;border:1px solid #d7ddd6;background:#fffdf8;border-radius:999px;padding:10px 15px}button:hover{border-color:#426f5b}.hero button,#mn{background:#426f5b;color:white;border:0;font-weight:700}.nav{display:flex;gap:8px;flex-wrap:wrap;padding-top:15px;padding-bottom:15px}.panel{display:none;background:#fffdf9;border-radius:24px;padding:28px;margin:8px 0 28px;box-shadow:0 10px 28px #35483d14}.active{display:block}.tiles,.cards,.help{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.tiles div,.card,.help a{border:1px solid #e7e0d5;border-radius:18px;padding:18px;background:#fff}.tiles div{font-size:2.2rem}.tiles b,.tiles span{display:block;font-size:1rem}.card{transition:.2s;cursor:pointer}.card:hover{transform:translateY(-4px);box-shadow:0 10px 22px #00000012}.art{height:120px;display:grid;place-items:center;font-size:4rem;border-radius:14px;background:linear-gradient(145deg,#e7f0e5,#f8e8d8)}.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#e6efe7;color:#426f5b;font-size:.75rem;margin:2px}.quiz{max-width:800px;border:1px solid #e7e0d5;border-radius:18px;padding:22px;background:#fff}.quiz button{display:block;width:100%;text-align:left;margin:8px 0}.quiz>button:not(#mn){background:#fff}.bar{height:9px;background:#eee7db;border-radius:99px;overflow:hidden;margin:12px 0}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#426f5b,#8eb398)}.hide{display:none!important}.help a{text-decoration:none;color:inherit;display:flex;flex-direction:column}.help a:hover{border-color:#426f5b}.warn{margin-top:18px;background:#fff1c7;border-left:5px solid #d7b14f;padding:15px;border-radius:12px}.foot{display:flex;align-items:center;gap:12px;padding-bottom:30px;color:#66736c}.foot img{width:55px}.modal{position:fixed;inset:0;background:#16231ccc;display:grid;place-items:center;padding:18px}.modalbox{background:#fffdf8;border-radius:22px;max-width:700px;width:100%;padding:25px;position:relative}.x{position:absolute;right:10px;top:8px;font-size:1.7rem}.modalArt{text-align:center;font-size:5rem;background:linear-gradient(145deg,#e7f0e5,#f8e8d8);border-radius:16px;padding:18px}.info{display:grid;grid-template-columns:1fr 1fr;gap:12px}.info div{background:#f3f5ef;padding:12px;border-radius:12px}@media(max-width:650px){.heroIn{align-items:flex-start;flex-direction:column}.logo{width:82px}.info{grid-template-columns:1fr}}
+
+/* ===== V3 – opravy vzhledu a ovládání ===== */
+.hero{padding:46px 0 40px}
+.heroCenter{text-align:center;max-width:900px}
+.heroCenter h1{
+  font-size:clamp(2.2rem,5vw,3.8rem);
+  line-height:1.08;
+  margin:.12em auto .22em;
+  text-align:center;
+}
+.heroText{
+  max-width:760px;
+  margin:0 auto;
+  font-size:1.12rem;
+}
+.introText{color:#66736c;margin-top:-5px;margin-bottom:16px}
+.counter{color:#66736c;font-weight:600}
+.answerRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin:22px 0 10px;
+}
+.quiz .answerBtn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:64px;
+  border-radius:15px;
+  font-size:1.06rem;
+  font-weight:800;
+  letter-spacing:.03em;
+  border:2px solid transparent;
+  box-shadow:0 5px 12px rgba(0,0,0,.06);
+}
+.quiz .mythBtn{
+  background:#fff0eb !important;
+  color:#934c37;
+  border-color:#edc4b8;
+}
+.quiz .factBtn{
+  background:#eaf5ea !important;
+  color:#356448;
+  border-color:#b9d8c1;
+}
+.quiz .mythBtn:hover{background:#fde4dc !important;border-color:#c97f64}
+.quiz .factBtn:hover{background:#dff0e1 !important;border-color:#6ea47b}
+.feedback{min-height:30px;padding:10px 0;font-weight:700}
+.quiz .nextBtn{
+  width:auto;
+  display:inline-block;
+  background:#426f5b;
+  color:white;
+  border:0;
+  font-weight:800;
+  text-align:center;
+  margin-top:8px;
+}
+.quiz .optionBtn{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin:11px 0;
+  padding:15px 16px;
+  border:1.5px solid #d7ddd6;
+  border-radius:14px;
+  background:#fffdf8;
+  color:#23332c;
+  font-size:1rem;
+  line-height:1.42;
+  cursor:pointer;
+  transition:.15s ease;
+}
+.quiz .optionBtn:hover{
+  border-color:#426f5b;
+  background:#f1f7f2;
+  transform:translateY(-1px);
+}
+.optionLetter{
+  display:inline-grid;
+  place-items:center;
+  width:29px;
+  height:29px;
+  border-radius:50%;
+  margin-right:10px;
+  background:#e6efe7;
+  color:#426f5b;
+  font-weight:800;
+}
+.help{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.help a{
+  min-height:155px;
+  justify-content:center;
+}
+@media(max-width:700px){
+  .answerRow{grid-template-columns:1fr}
+  .help{grid-template-columns:1fr}
+  .heroCenter h1{font-size:clamp(2rem,10vw,3rem)}
+}
+
+
+/* ===== V4: automatický přechod a výsledek kvízu ===== */
+.scenarioOption:disabled{
+  cursor:default;
+  opacity:.78;
+}
+.scenarioOption.selectedCorrect{
+  border-color:#6ea47b !important;
+  background:#e6f3e8 !important;
+}
+.scenarioOption.selectedWrong{
+  border-color:#c97f64 !important;
+  background:#fff0eb !important;
+}
+.perfectScore{
+  text-align:center;
+  padding:18px 10px 8px;
+}
+.trophy{
+  font-size:5rem;
+  line-height:1;
+  animation:trophyPop .55s ease-out;
+}
+.perfectScore h3{
+  font-size:1.8rem;
+  margin:.45em 0 .2em;
+}
+@keyframes trophyPop{
+  0%{transform:scale(.35) rotate(-12deg);opacity:0}
+  70%{transform:scale(1.15) rotate(4deg);opacity:1}
+  100%{transform:scale(1) rotate(0)}
+}
+
+
+/* ===== V6: přehled chybných odpovědí v kvízu ===== */
+.mistakeReview{
+  margin-top:24px;
+  text-align:left;
+}
+.mistakeReview h3{
+  margin-bottom:14px;
+}
+.mistakeItem{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  padding:14px;
+  margin:12px 0;
+  border:1px solid #ead8d1;
+  background:#fff8f5;
+  border-radius:14px;
+}
+.mistakeNo{
+  display:grid;
+  place-items:center;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#f1d8cf;
+  color:#8d4b3b;
+  font-weight:800;
+}
+.mistakeItem p{
+  margin:.25em 0;
+}
+.mistakeQuestion{
+  margin-top:0 !important;
+}
+.bad{
+  color:#9a4f3d;
+  font-weight:800;
+}
+.good{
+  color:#3f725e;
+  font-weight:800;
+}
+
+
+/* ===== V6.1: číslo chybné otázky ===== */
+.mistakeLabel{
+  margin:0 0 4px !important;
+  font-size:.86rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:#8d6a5f;
+  font-weight:800;
+}
+
+/* V7 – malé tlačítko Zdroje v zápatí */
+.footRow{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.footIdentity{display:flex;align-items:center;gap:12px}
+.sourcesBtn{border:1px solid #cfd8d1;background:#fffdf8;color:#426f5b;border-radius:999px;padding:8px 13px;font-size:.9rem;font-weight:700;cursor:pointer}
+.sourcesBtn:hover{background:#eef5ef;border-color:#8baa98}
+.sourcesModal{position:fixed;inset:0;z-index:70;display:grid;place-items:center;background:rgba(22,31,27,.58);padding:20px}
+.sourcesCard{position:relative;width:min(860px,100%);max-height:88vh;overflow:auto;background:#fffefb;border-radius:22px;padding:28px;box-shadow:0 18px 50px rgba(0,0,0,.18)}
+.sourcesCard h2{font-family:Georgia,serif;margin-top:0}
+.sourcesCard h3{margin-top:22px;color:#365d4e}
+.sourcesCard ul{padding-left:20px}
+.sourcesCard li{margin:.45em 0}
+.sourcesCard a{color:#2f6f5e}
+@media(max-width:700px){.footRow{align-items:flex-start}.sourcesBtn{flex:0 0 auto}.sourcesCard{padding:22px}}
+
+
+/* ===== V8: botanické AI ilustrace v kartách ===== */
+.art{
+  height:190px;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(145deg,#f7f4ea,#eef5ef);
+}
+.art img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.modalArt{
+  min-height:280px;
+  max-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#faf8f2;
+  border-radius:18px;
+  overflow:hidden;
+  padding:12px;
+}
+.modalArt img{
+  max-width:100%;
+  max-height:390px;
+  object-fit:contain;
+  display:block;
+}
+
+/* V8.2 – odolnější zobrazení obrázků */
+.art{font-size:0!important;}
+.art img{font-size:14px;max-width:100%;max-height:100%;object-fit:contain;}
