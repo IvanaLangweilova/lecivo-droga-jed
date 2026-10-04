@@ -1,0 +1,91 @@
+<!doctype html><html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Léčivo, droga, nebo jed?</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="hero">
+  <div class="wrap heroCenter">
+    <div class="eyebrow">Preventivně-výchovná aplikace</div>
+    <h1>Léčivo, droga, nebo jed?</h1>
+    <p class="heroText">Přírodní ≠ automaticky bezpečné. Objevuj, ověřuj a rozhoduj se podle faktů.</p>
+  </div>
+</header>
+<nav class="wrap nav"><button onclick="show('uvod')">🏠 Úvod</button><button onclick="show('latky')">🌿 Atlas</button><button onclick="show('myty')">🧩 Mýtus × fakt</button><button onclick="show('situace')">💬 Co bys udělal/a?</button><button onclick="show('kviz')">🏆 Kvíz</button><button onclick="show('prevence')">🧭 Pomoc</button></nav>
+<main class="wrap">
+<section id="uvod" class="panel active"><h2>Proč tahle aplikace?</h2><p>Ukazuje rozdíl mezi přírodním původem, léčebným využitím, toxicitou a návykovým potenciálem. Není to návod k užívání látek.</p><div class="tiles"><div>🌿<b>Přírodní</b><span>neznamená automaticky bezpečné</span></div><div>💊<b>Léčivo</b><span>má přesně definované použití</span></div><div>🧠<b>Prevence</b><span>znamená umět se rozhodnout</span></div></div></section>
+<section id="latky" class="panel"><h2>Atlas vybraných rostlin a látek</h2><div id="cards" class="cards"></div></section>
+<section id="myty" class="panel">
+  <h2>Mýtus, nebo fakt?</h2>
+  <p class="introText">Přečti si tvrzení a klikni na jednu ze dvou možností.</p>
+  <div class="bar"><i id="mb"></i></div>
+  <p id="mp" class="counter"></p>
+  <div class="quiz">
+    <h3 id="mq"></h3>
+    <div class="answerRow">
+      <button class="answerBtn mythBtn" onclick="ansMyth(false)">✕ MÝTUS</button>
+      <button class="answerBtn factBtn" onclick="ansMyth(true)">✓ FAKT</button>
+    </div>
+    <p id="mf" class="feedback"></p>
+    <button id="mn" class="nextBtn hide" onclick="nextMyth()">Další tvrzení →</button>
+  </div>
+</section>
+<section id="situace" class="panel">
+  <h2>Co bys udělal/a?</h2>
+  <p class="introText">Vyber jednu možnost. Po kliknutí se zobrazí vysvětlení.</p>
+  <div class="bar"><i id="sb"></i></div>
+  <div id="scenario" class="quiz"></div>
+</section>
+<section id="kviz" class="panel">
+  <h2>Závěrečný kvíz</h2>
+  <p class="introText">Vyber vždy jednu odpověď. Na konci se zobrazí celkové skóre.</p>
+  <div class="bar"><i id="qb"></i></div>
+  <div id="quiz" class="quiz"></div>
+</section>
+<section id="prevence" class="panel"><h2>Prevence a pomoc</h2><div class="help"><a href="https://www.chciodvykat.cz/" target="_blank"><b>☎️ Národní linka pro odvykání</b><span>800 350 000 • pro osoby od 15 let a blízké • všední dny 10–18</span></a><a href="https://www.linkabezpeci.cz/pomoc" target="_blank"><b>💬 Linka bezpečí</b><span>116 111 • děti a studenti do 26 let • telefon nonstop zdarma</span></a><a href="https://www.drogy-info.cz/" target="_blank"><b>🗺️ drogy-info.cz</b><span>odborné informace o závislostech</span></a><a href="https://www.drogy-info.cz/mapa-pomoci/" target="_blank"><b>📍 Mapa pomoci</b><span>vyhledání odborných služeb</span></a></div><div class="warn"><b>Akutní ohrožení zdraví nebo života:</b> volej 155 nebo 112.</div></section>
+</main><footer class="wrap foot footRow">
+  <div class="footIdentity">
+    <img src="ilang-logo.png" alt="ILang">
+    <div><b>© 2026 ILang</b><br>Preventivně-výchovná aplikace pro projekt SOČ</div>
+  </div>
+  <button class="sourcesBtn" onclick="openSources()">Zdroje</button>
+</footer>
+
+<div id="sourcesModal" class="sourcesModal hide" onclick="closeSources(event)">
+  <div class="sourcesCard">
+    <button class="x" onclick="closeSources(event,true)">×</button>
+    <h2>Zdroje a metodické poznámky</h2>
+
+    <h3>O aplikaci</h3>
+    <p>Tato aplikace vzniká jako preventivně-výchovný nástroj k tématu přírodních psychoaktivních látek, léčivých rostlin, jejich současného medicínského využití, rizik zneužívání a prevence. Obsah je určen především adolescentům a pedagogickým pracovníkům.</p>
+
+    <h3>Obrazový materiál</h3>
+    <p>Všechny ilustrace rostlin a další obrazové prvky v aplikaci jsou vytvořeny pomocí generativní AI pro edukační účely. Slouží jako ilustrační vizualizace a nenahrazují botanický atlas ani určovací klíč.</p>
+
+    <h3>Odborná literatura – léčivé rostliny, farmakognózie a toxikologie</h3>
+    <ul>
+      <li>SPILKOVÁ, Jiřina a kol. <em>Farmakognozie</em>. 2. vyd. Praha: Karolinum, 2023. ISBN 978-80-246-5700-4.</li>
+      <li>HEINRICH, Michael; BARNES, Joanne; PRIETO-GARCIA, José; GIBBONS, Simon; WILLIAMSON, Elizabeth. <em>Fundamentals of Pharmacognosy and Phytotherapy</em>. 3rd ed. Elsevier, 2018. ISBN 978-0-7020-7008-2.</li>
+      <li>JAHODÁŘ, Luděk. <em>Rostliny způsobující otravy</em>. Praha: Karolinum, 2018. ISBN 978-80-246-4050-1.</li>
+      <li>JAHODÁŘ, Luděk. <em>Léčivé rostliny v současné medicíně: co Mattioli ještě nevěděl</em>. Praha: Havlíček Brain Team, 2010. ISBN 978-80-87109-22-9.</li>
+      <li>HRDINA, Vratislav a kol. <em>Přírodní toxiny a jedy</em>. Praha: Galén, 2004. ISBN 80-7262-256-0.</li>
+      <li>TOMKO, Jozef a kol. <em>Farmakognózia</em>. Martin: Osveta, 1999. ISBN 80-8063-014-3.</li>
+    </ul>
+
+    <h3>Odborná literatura – adiktologie a prevence</h3>
+    <ul>
+      <li>KALINA, Kamil a kol. <em>Klinická adiktologie</em>. Praha: Grada, 2015. ISBN 978-80-247-4331-8.</li>
+      <li>MIOVSKÝ, Michal a kol. <em>Výkladový slovník základních pojmů školské prevence rizikového chování</em>. 2. vyd. Praha: Nakladatelství Lidové noviny, 2015. ISBN 978-80-7422-393-8.</li>
+      <li>ČECH, Tomáš. „Prevence“. In: MIOVSKÝ, Michal a kol. <em>Výkladový slovník základních pojmů školské prevence rizikového chování</em>. Praha: Nakladatelství Lidové noviny, 2015.</li>
+      <li>GALLÀ, M. a kol. <em>Jak ve škole vytvořit zdravější prostředí: příručka o efektivní školní drogové prevenci</em>. Praha: Úřad vlády České republiky, 2005. ISBN 80-86734-38-2.</li>
+      <li>HAMANOVÁ, Jana a kol. <em>Rizikové chování v dospívání a jeho vztah ke zdraví</em>. Praha: Triton. ISBN 978-80-7387-793-4.</li>
+    </ul>
+
+    <h3>Veřejné odborné a metodické zdroje</h3>
+    <ul>
+      <li><a href="https://www.drogy-info.cz/" target="_blank" rel="noopener">drogy-info.cz</a> – Národní informační portál o závislostech.</li>
+      <li><a href="https://www.chciodvykat.cz/" target="_blank" rel="noopener">chciodvykat.cz</a> – Národní linka pro odvykání.</li>
+      <li><a href="https://www.linkabezpeci.cz/" target="_blank" rel="noopener">linkabezpeci.cz</a> – pomoc dětem a studentům.</li>
+      <li><a href="https://is.muni.cz/" target="_blank" rel="noopener">Masarykova univerzita – studijní materiály k léčivým rostlinám</a>.</li>
+    </ul>
+
+    <h3>Upozornění</h3>
+    <p>Aplikace neslouží jako návod k získávání, výrobě, dávkování ani užívání návykových látek. Jejím cílem je vzdělávání, prevence, rozvoj kritického myšlení a podpora bezpečného rozhodování. Uvedené informace nenahrazují odborné lékařské, psychologické ani adiktologické poradenství.</p>
+  </div>
+</div>
+<div id="modal" class="modal hide" onclick="closeM(event)"><div class="modalbox"><button class="x" onclick="closeM(event,true)">×</button><div id="modalC"></div></div></div><script src="app.js"></script></body></html>
